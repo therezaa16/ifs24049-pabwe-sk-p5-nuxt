@@ -1,15 +1,41 @@
 import { defineStore } from "pinia";
 import cashFlowApi, {
   emptyStats,
-  type CashFlow,
   type CashFlowPayload,
+  type CashFlowSource,
+  type CashFlowType,
   type CashFlowPeriodStats,
-  type CashFlowQueryParams,
-  type CashFlowStats,
 } from "../api/cashFlowApi";
 import { showErrorDialog, showSuccessDialog } from "../../../helpers/toolsHelper";
 
-export type { CashFlow, CashFlowStats, CashFlowQueryParams };
+export interface CashFlow {
+  id: number;
+  user_id?: number;
+  type: CashFlowType;
+  source: CashFlowSource;
+  label: string;
+  description: string;
+  nominal: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface CashFlowStats {
+  cashflow: number;
+  total_inflow: number;
+  total_outflow: number;
+  cash: number;
+  savings: number;
+  loans: number;
+}
+
+export interface CashFlowQueryParams {
+  type?: CashFlowType | "";
+  source?: CashFlowSource | "";
+  label?: string;
+  start_date?: string;
+  end_date?: string;
+}
 
 export interface CashFlowsState {
   cashFlows: CashFlow[];

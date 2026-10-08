@@ -1,36 +1,8 @@
 import apiHelper from "../../../helpers/apiHelper";
+import type { CashFlow, CashFlowQueryParams, CashFlowStats } from "../states/cashFlowsStore";
 
 export type CashFlowType = "inflow" | "outflow";
 export type CashFlowSource = "cash" | "savings" | "loans";
-
-export interface CashFlow {
-  id: number;
-  user_id?: number;
-  type: CashFlowType;
-  source: CashFlowSource;
-  label: string;
-  description: string;
-  nominal: number;
-  created_at?: string;
-  updated_at?: string;
-}
-
-export interface CashFlowStats {
-  cashflow: number;
-  total_inflow: number;
-  total_outflow: number;
-  cash: number;
-  savings: number;
-  loans: number;
-}
-
-export interface CashFlowQueryParams {
-  type?: CashFlowType | "";
-  source?: CashFlowSource | "";
-  label?: string;
-  start_date?: string;
-  end_date?: string;
-}
 
 export interface CashFlowPayload {
   type: CashFlowType;

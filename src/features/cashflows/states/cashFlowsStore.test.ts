@@ -1,7 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { setActivePinia, createPinia } from "pinia";
 import { useCashFlowsStore } from "./cashFlowsStore";
-import cashFlowApi, { emptyStats, type CashFlow } from "../api/cashFlowApi";
+import cashFlowApi, { emptyStats } from "../api/cashFlowApi";
+import type { CashFlow } from "./cashFlowsStore";
 import * as toolsHelper from "../../../helpers/toolsHelper";
 
 const dummy: CashFlow = {
